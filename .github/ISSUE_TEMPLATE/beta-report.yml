@@ -1,0 +1,50 @@
+name: Beta report
+description: Send your two-week beta report and feedback.
+title: "Beta report: "
+labels: ["beta-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing DotShield. Issues here are **public**.
+        Paste only the output of `dotshield guard report --days 14 --json`: it holds counts, rule ids, dates and timings, never a file path, file contents or a secret value. Read it before you paste it.
+        **Never paste** `~/.dotshield/log/guard.jsonl`, scan output, or anything from your projects.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `dotshield version`
+      placeholder: dotshield v0.1.0-beta.3 (d1a9c09)
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [macOS, Linux, Windows]
+    validations:
+      required: true
+  - type: checkboxes
+    id: agents
+    attributes:
+      label: Agents you used it with
+      options:
+        - label: Claude Code
+        - label: Cursor
+  - type: textarea
+    id: report
+    attributes:
+      label: Report
+      description: Output of `dotshield guard report --days 14 --json`
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What got in your way, surprised you, or was missing?
+  - type: dropdown
+    id: keep
+    attributes:
+      label: Will you keep it on?
+      options: ["Yes, in enforce mode", "Yes, in watch mode", "No"]
