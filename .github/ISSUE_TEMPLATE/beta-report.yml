@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thank you for testing DotShield. Issues here are **public**.
-        Paste only the output of `dotshield guard report --days 14 --json`: it holds counts, rule ids, dates and timings, never a file path, file contents or a secret value. Read it before you paste it.
+        Paste only what DotShield prints for sharing: the summary between the "copy from here" markers at the end of every `dotshield scan`, and, after the two-week beta, the output of `dotshield guard report --days 14 --json`. Both hold counts and timings only, never a file path, file contents or a secret value. Read them before you paste them. We never ask for secret values or your code.
         **Never paste** `~/.dotshield/log/guard.jsonl`, scan output, or anything from your projects.
   - type: input
     id: version
@@ -32,17 +32,22 @@ body:
         - label: Claude Code
         - label: Cursor
   - type: textarea
+    id: scan
+    attributes:
+      label: Scan summary
+      description: The lines between "copy from here" and "to here" at the end of `dotshield scan`
+      render: text
+  - type: textarea
     id: report
     attributes:
-      label: Report
+      label: Guard report (after the two-week beta)
       description: Output of `dotshield guard report --days 14 --json`
       render: json
-    validations:
-      required: true
   - type: textarea
     id: feedback
     attributes:
-      label: What got in your way, surprised you, or was missing?
+      label: Which findings were wrong, and what got in your way, surprised you or was missing?
+      description: Name findings by their rule (for example generic-secret-assignment), never by value.
   - type: dropdown
     id: keep
     attributes:
