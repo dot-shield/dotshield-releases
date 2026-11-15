@@ -67,6 +67,7 @@ Thank you for trying it. The beta takes two weeks:
 
 1. **Week 1, watch.** Run `dotshield guard install` and work as usual. Now and then, run `dotshield guard report` to see what it would have blocked.
 2. **Week 2, enforce.** Run `dotshield guard mode enforce`. If it blocks something that isn't a secret, use `dotshield allow fingerprint <fp>` or `dotshield allow path <path>`. That is also how the beta counts false blocks. If it gets in your way, `dotshield guard mode watch` turns blocking off. Please tell us why.
+   After every scan, DotShield prints a short summary between two markers: counts per kind of secret, with no file names, paths or values. Paste it into the [beta report form](https://github.com/dot-shield/dotshield-releases/issues/new?template=beta-report.yml) and tell us which findings were wrong. (This needs DotShield 0.1.0-beta.5 or later.)
 3. **At the end, send your report.**
 
    ```bash
